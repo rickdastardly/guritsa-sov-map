@@ -1,3 +1,5 @@
+0.2.5: Runs on any Windows 10/11 PC out of the box: no Visual C++ runtime needed, and the installer sets up Microsoft Edge WebView2 by itself if it's missing.
+
 0.2.4: Intel channels: the app reads your EVE chat logs, pins every intel report on the map with how long ago and how many jumps from you, and alerts you (sound + flashing taskbar) when hostiles are reported close.
 
 0.2.3: The Gurista logo opens gurista.co.uk in your browser, and any link that leaves the Sov Map opens in your browser instead of the app window.

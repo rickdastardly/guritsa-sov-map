@@ -26,7 +26,7 @@
    Prefer no installer? Download the `.zip`, unzip anywhere and run `GuristaSovMap.exe`.
 2. Windows may say *"Windows protected your PC"* the first time: the app is new and isn't code-signed. Click **More info → Run anyway**.
 
-**Needs:** Windows 10 or 11 (64-bit) and the Microsoft Edge WebView2 runtime, which is already part of Windows 10/11. If it's ever missing, the app opens Microsoft's download page for it.
+**Needs:** Windows 10 or 11 (64-bit). That's it: the app has no runtime DLLs to install, and the installer sets up Microsoft Edge WebView2 (the engine that draws the map) by itself if your PC doesn't have it yet. The portable version opens Microsoft's download page for WebView2 if it's ever missing.
 
 The app keeps itself up to date: it checks a tiny file every 6 hours and offers a one-click update when there's a new version. Map data comes from [gurista.co.uk](https://gurista.co.uk/sov-map/), so new map features arrive without updating the app at all.
 
@@ -39,7 +39,7 @@ No account, no tracking. The app talks to gurista.co.uk (map data) and CCP's pub
 Each release lists SHA-256 hashes. In PowerShell:
 
 ```powershell
-Get-FileHash .\GuristaSovMap-Setup-0.2.4.exe
+Get-FileHash .\GuristaSovMap-Setup-0.2.5.exe
 ```
 
 ## Build it yourself

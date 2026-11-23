@@ -1,0 +1,4 @@
+# Link the C runtime into the .exe, so the app runs on a clean Windows install without the
+# "VCRUNTIME140.dll was not found" error (no Visual C++ Redistributable needed).
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

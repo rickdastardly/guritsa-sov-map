@@ -1,6 +1,6 @@
 [package]
 name = "gurista-sov-map"
-version = "0.2.4"
+version = "0.2.5"
 edition = "2021"
 description = "Gurista Sov Map — EVE Online sovereignty map for the desktop"
 license = "MIT"
