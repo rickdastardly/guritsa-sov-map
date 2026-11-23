@@ -1,0 +1,27 @@
+# Publishes a GitHub release when a version tag is pushed (git tag v1.2.3 && git push origin v1.2.3).
+# The files are the exact builds in release/<tag>/ (the same files gurista.co.uk serves for
+# self-update), so hashes match everywhere. Release notes come from release/<tag>/NOTES.md.
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check files
+        run: |
+          ls -la "release/${GITHUB_REF_NAME}"
+          cd "release/${GITHUB_REF_NAME}" && sha256sum -c SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Gurista - Sov Map ${{ github.ref_name }}
+          body_path: release/${{ github.ref_name }}/NOTES.md
+          make_latest: true
+          files: |
+            release/${{ github.ref_name }}/*.exe
+            release/${{ github.ref_name }}/*.zip
+            release/${{ github.ref_name }}/SHA256SUMS.txt

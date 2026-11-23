@@ -1,0 +1,3 @@
+fc1d676ae11b8b51d9d290b823ee3c9d273289bc2dd32b222f0be1c1d5f6725f  GuristaSovMap-Setup-0.2.4.exe
+08d13bad17b2d8f3cc6e27c65db3720273ab0eeadc26ce649954842110704a8c  GuristaSovMap-0.2.4.exe
+dc9a3849ac452489df6f792d68183330cf42ddc990ff6b96a267421cb0cf350f  Gurista-Sov-Map-0.2.4-windows.zip
