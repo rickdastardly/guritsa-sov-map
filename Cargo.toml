@@ -1,0 +1,33 @@
+[package]
+name = "gurista-sov-map"
+version = "0.2.4"
+edition = "2021"
+description = "Gurista Sov Map — EVE Online sovereignty map for the desktop"
+license = "MIT"
+
+[[bin]]
+name = "sovmap"
+path = "src/main.rs"
+
+[dependencies]
+# Native window + Edge WebView2 (built into Windows 10/11): the app shows the real site.
+tao = "0.37"
+wry = "0.57"
+ureq = "2"
+serde_json = "1"
+directories = "5"
+
+# The earlier fully-native (egui) version is kept in src-egui/ for reference; it isn't built.
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 2
+
+# Windows: embed the app icon and version info into sovmap.exe
+[target.'cfg(windows)'.build-dependencies]
+winresource = "0.1"

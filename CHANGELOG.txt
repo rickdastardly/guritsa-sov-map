@@ -1,0 +1,9 @@
+0.2.4: Intel channels: the app reads your EVE chat logs, pins every intel report on the map with how long ago and how many jumps from you, and alerts you (sound + flashing taskbar) when hostiles are reported close.
+
+0.2.3: The Gurista logo opens gurista.co.uk in your browser, and any link that leaves the Sov Map opens in your browser instead of the app window.
+
+0.2.2: The app is now an exact copy of gurista.co.uk/sov-map in its own window: every feature and every site update lands instantly with nothing to download. Dark native frame, remembers its size and position, F11 fullscreen, outside links open in your browser, works offline from cache, updates itself.
+
+0.2.1: Coalitions (same as the website), true in-game star positions, sov territory that follows gates and leaves unclaimed and empty space dark, smaller update checks, and the app now updates itself.
+
+0.2.0: Everything from the website: live kills, battles, gatecamps, activity, route and jump planners, overlays, killboard, Sov Index and intel.
