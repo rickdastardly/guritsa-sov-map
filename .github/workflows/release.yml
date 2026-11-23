@@ -1,10 +1,13 @@
-# Publishes a GitHub release when a version tag is pushed (git tag v1.2.3 && git push origin v1.2.3).
-# The files are the exact builds in release/<tag>/ (the same files gurista.co.uk serves for
-# self-update), so hashes match everywhere. Release notes come from release/<tag>/NOTES.md.
+# Publishes a GitHub release whenever a new release/<version>/ folder lands on main.
+# The files are the exact builds in that folder (the same files gurista.co.uk serves for
+# self-update), so hashes match everywhere. Release notes come from release/<version>/NOTES.md.
+# To release: add release/v1.2.3/ with the .exe files, the .zip, SHA256SUMS.txt and NOTES.md, push to main.
 name: release
 on:
   push:
-    tags: ['v*']
+    branches: [main]
+    paths: ['release/**']
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -12,16 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check files
+      - name: Find newest version
+        id: v
         run: |
-          ls -la "release/${GITHUB_REF_NAME}"
-          cd "release/${GITHUB_REF_NAME}" && sha256sum -c SHA256SUMS.txt
+          V=$(ls release | sort -V | tail -1)
+          echo "tag=$V" >> "$GITHUB_OUTPUT"
+          cd "release/$V" && ls -la && sha256sum -c SHA256SUMS.txt
+      - name: Skip if already released
+        id: have
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${{ steps.v.outputs.tag }}" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then echo "done=1" >> "$GITHUB_OUTPUT"; fi
       - uses: softprops/action-gh-release@v2
+        if: steps.have.outputs.done != '1'
         with:
-          name: Gurista - Sov Map ${{ github.ref_name }}
-          body_path: release/${{ github.ref_name }}/NOTES.md
+          tag_name: ${{ steps.v.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: Gurista - Sov Map ${{ steps.v.outputs.tag }}
+          body_path: release/${{ steps.v.outputs.tag }}/NOTES.md
           make_latest: true
           files: |
-            release/${{ github.ref_name }}/*.exe
-            release/${{ github.ref_name }}/*.zip
-            release/${{ github.ref_name }}/SHA256SUMS.txt
+            release/${{ steps.v.outputs.tag }}/*.exe
+            release/${{ steps.v.outputs.tag }}/*.zip
+            release/${{ steps.v.outputs.tag }}/SHA256SUMS.txt
