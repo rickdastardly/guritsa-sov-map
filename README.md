@@ -4,7 +4,7 @@
 
 ![Gurista - Sov Map](assets/icon-256.png)
 
-**[Download the latest release](https://github.com/rickdastardly/gurista-sov-map/releases/latest)** · Website version: [gurista.co.uk/sov-map](https://gurista.co.uk/sov-map/)
+**[Download the latest release](https://github.com/rickdastardly/guritsa-sov-map/releases/latest)** · Website version: [gurista.co.uk/sov-map](https://gurista.co.uk/sov-map/)
 
 ## What's in it
 
@@ -22,7 +22,7 @@
 
 ## Install
 
-1. Download **`GuristaSovMap-Setup-<version>.exe`** from [Releases](https://github.com/rickdastardly/gurista-sov-map/releases/latest) and run it. No admin rights needed.
+1. Download **`GuristaSovMap-Setup-<version>.exe`** from [Releases](https://github.com/rickdastardly/guritsa-sov-map/releases/latest) and run it. No admin rights needed.
    Prefer no installer? Download the `.zip`, unzip anywhere and run `GuristaSovMap.exe`.
 2. Windows may say *"Windows protected your PC"* the first time: the app is new and isn't code-signed. Click **More info → Run anyway**.
 
